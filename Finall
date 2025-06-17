@@ -1,0 +1,50 @@
+import java.util.Scanner;
+class Finall {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Select a program to run:");
+            System.out.println("1: DSA");
+            System.out.println("2: CRUD (SQL File Based)");
+            System.out.println("3: JavaFX Dynamic CRUD");
+            System.out.println("4: Exit");
+			System.out.print("Enter your choice: ");
+			int choice;
+            try {
+                choice = in.nextInt();
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a number.");
+                in.nextLine(); // clear buffer
+                continue;
+            }
+			switch (choice){
+                case 1:
+                    DSA.main(null);
+                    break;
+                case 2:
+                    CrudSql2.main(null);
+                    break;
+                case 3:
+                    try {
+                        ProcessBuilder pb = new ProcessBuilder(
+                            "java",
+                            "--module-path","C:\\Program Files\\javafx-sdk-21.0.7\\lib",
+                            "--add-modules","javafx.controls",
+                            "Javafxp"
+                        );
+                        pb.inheritIO();
+                        pb.start().waitFor();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 4:
+                    System.out.println("Exiting program.");
+                    return;
+                default:
+                    System.out.println("Please enter a valid option (1–4).");
+            }
+        }
+    }
+}
